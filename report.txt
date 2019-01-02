@@ -1,0 +1,23 @@
+Cache Simulator Report
+By: Zain Siddiqui
+	In this program, I have implemented both the FIFO and LRU replacement policies. The main data structures that I have applied in the Cache Simulator consist of an array with a single Set Node at each index of the array. The Set Node at each index, points to an n-length linked list of Block Nodes with n being the cache associativity. The reason why I implemented a Set Node at each index was because this node allowed me to keep track of the replacement algorithm for each set in the cache. The Set Node consisted of a counter for the FIFO replacement algorithm and a recent tag array for the LRU replacement algorithm. I decided to implement a linked list of block nodes as this allowed more consistency when creating the cache. Having a linked list for all cache types (direct,n-way associative, fully associative) made it easier to design a universal function to create a cache using linked lists.
+	The prefetcher had slightly increased the number of memory reads, however it had significantly increased the number of hits in the cache. Thus, the number of misses in the cache had decreased with the prefetcher. The prefetcher essentially anticipates the address that will be needed later and reads it in the cache beforehand. As a result, the cache does slightly more memory reads as an adjacent block is prefetched. However, this anticipation proves quite beneficial as the probability of a cache hit increases. For example, the hit ratio of a direct cache without prefetcher of size 32 bytes and a block size of 4 bytes with a replacement policy of FIFO was roughly 65%. The hit ratio the same cache with a prefetcher was roughly 81%. This shows that prefetcher, with an increase in memory reads, increases the number of cache hits greatly.
+
+
+Set Node Structure:
+//Cache Set
+typedef struct setNode{
+  struct blockNode * b;
+  int linkCount; // 1 if first, otherwise will be 0 (Used for FIFO Replacement Algorithmn)
+  unsigned long long int * recentTag; //LRU Replacement Algorithmn
+}setNode;
+
+
+Block Node Structure:
+//Cache Block (Cache Line)
+typedef struct blockNode{
+int valid ; // 0 if not valid, 1 if valid
+ unsigned long int firstNode; // 0 if never used, otherwise will count number of accesses (Used for LRU Replacement Algorithmn)
+unsigned long long int tag;
+struct blockNode *next;
+}blockNode;
