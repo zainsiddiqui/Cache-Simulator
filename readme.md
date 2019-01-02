@@ -5,7 +5,7 @@ Program that simulates different write-through cache configurations and evaluate
 * Running simulator interface: ./first <cache size(bytes)><associativity(power of 2)><cache policy(LRU or (FIFO)><block size(bytes)><memory trace file>
 
 
-**Sample Cache Simulation with file of over a **million lines** of memory accesses:**
+**Sample Cache Simulation with file of over a **MILLION** lines of memory accesses:**
 * Cache Size: 32 bytes
 * Associativity: 2-way
 * Policy: First In First Out
