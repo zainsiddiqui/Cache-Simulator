@@ -6,6 +6,8 @@ Program that simulates different write-through cache configurations and evaluate
 
 
 **Sample Cache Simulation:**
+./first 32 assoc:2 fifo 4 trace4.txt
+
 ![image](https://user-images.githubusercontent.com/39894720/50580644-36f03e00-0e1f-11e9-9d99-51dc1600814f.png)
 
 All use of this code must comply with the Rutgers University Code of Student Conduct.
